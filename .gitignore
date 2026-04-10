@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.cursor/
+*.swp
+*.swo
+
+# Temp build files
+.pylibs/
+node_modules/
+
+# Unused assets (not needed on live site)
+images/_unused/
+
+# Raw source photos in root (not part of website)
+/*.jpg
+/*.jpeg
+/*.png
+/*.HEIC
+/*.heic
+/*.pdf
+/*.PHOTO*

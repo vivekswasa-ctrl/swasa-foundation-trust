@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="400" viewBox="0 0 320 400" role="img" aria-labelledby="title desc">
+  <title id="title">Photo placeholder</title>
+  <desc id="desc">Replace this file with a portrait of Dr. Vishnun Rao Veerapaneni</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dfece8"/>
+      <stop offset="100%" style="stop-color:#c5dde8"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="400" fill="url(#bg)"/>
+  <circle cx="160" cy="150" r="48" fill="#2d6a5c" opacity="0.25"/>
+  <text x="160" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#2d6a5c">VRV</text>
+  <text x="160" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4a5f57">Add your photo here</text>
+</svg>

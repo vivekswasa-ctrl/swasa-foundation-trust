@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-labelledby="phTitle">
+  <title id="phTitle">Photo placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8f0f8"/>
+      <stop offset="100%" stop-color="#e5f0ec"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="797" height="497" rx="12" fill="none" stroke="#b0c4d8" stroke-width="2" stroke-dasharray="10 8"/>
+  <rect x="280" y="175" width="240" height="160" rx="8" fill="none" stroke="#7a9ab8" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="400" cy="235" r="22" fill="none" stroke="#7a9ab8" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="400" cy="232" r="8" fill="#7a9ab8" opacity="0.35"/>
+  <text x="400" y="300" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="15" fill="#3d5a73" font-weight="600">Your photo</text>
+  <text x="400" y="328" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="12" fill="#6a8299">Replace this file in images/outreach/</text>
+</svg>
