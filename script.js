@@ -37,7 +37,7 @@
     var btnPrev = carouselRoot.querySelector("[data-carousel-prev]");
     var btnNext = carouselRoot.querySelector("[data-carousel-next]");
     var total = dots.length;
-    var AUTO_MS = 3500;
+    var AUTO_MS = 3000;
     var SCROLL_MS = 1100;
     var autoIntervalId = null;
     var scrollAnimToken = 0;
@@ -558,6 +558,59 @@
   }
 
   buildMediaCoverage();
+
+  /* ── Collapsible galleries ── */
+  function setupCollapsibleGallery(galleryEl, rowsToShow) {
+    if (!galleryEl) return;
+
+    var items = galleryEl.children;
+    if (items.length === 0) return;
+
+    var firstItem = items[0];
+    var itemHeight = firstItem.offsetHeight;
+    var style = window.getComputedStyle(galleryEl);
+    var gap = parseFloat(style.rowGap) || parseFloat(style.gap) || 12;
+    var collapsedHeight = (itemHeight + gap) * rowsToShow - gap + 20;
+
+    galleryEl.classList.add("gallery-collapsible", "is-collapsed");
+    galleryEl.style.setProperty("--collapsed-height", collapsedHeight + "px");
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "gallery-show-more";
+    btn.textContent = "Click here to view more photos";
+    galleryEl.parentNode.insertBefore(btn, galleryEl.nextSibling);
+
+    btn.addEventListener("click", function () {
+      var isCollapsed = galleryEl.classList.contains("is-collapsed");
+      if (isCollapsed) {
+        galleryEl.style.maxHeight = galleryEl.scrollHeight + "px";
+        galleryEl.classList.remove("is-collapsed");
+        btn.textContent = "Show less";
+        btn.classList.add("is-expanded");
+        setTimeout(function () {
+          galleryEl.style.maxHeight = "none";
+        }, 500);
+      } else {
+        galleryEl.style.maxHeight = galleryEl.scrollHeight + "px";
+        galleryEl.offsetHeight;
+        galleryEl.style.maxHeight = collapsedHeight + "px";
+        galleryEl.classList.add("is-collapsed");
+        btn.textContent = "Click here to view more photos";
+        btn.classList.remove("is-expanded");
+      }
+    });
+  }
+
+  var actGallery = document.getElementById("activity-gallery");
+  if (actGallery) {
+    setupCollapsibleGallery(actGallery, 2);
+  }
+
+  var mediaGrid = document.querySelector(".media-gallery");
+  if (mediaGrid) {
+    setupCollapsibleGallery(mediaGrid, 3);
+  }
 
   function initImageLightbox() {
     var box = document.getElementById("image-lightbox");
