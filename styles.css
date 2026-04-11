@@ -599,6 +599,7 @@ body.register-open {
   justify-content: center;
   gap: 0;
   max-width: 52rem;
+  margin-top: -3.5rem;
 }
 
 .hero-sr-title {
