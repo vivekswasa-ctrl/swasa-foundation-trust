@@ -703,4 +703,73 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  /* ── Announcement bar close ── */
+  var announceBar = document.getElementById("announce-bar");
+  var announceClose = document.getElementById("announce-close");
+  if (announceBar && announceClose) {
+    announceClose.addEventListener("click", function () {
+      announceBar.classList.add("is-hidden");
+    });
+  }
+
+  /* ── Registration popup ── */
+  var overlay = document.getElementById("register-overlay");
+  var openBtn = document.getElementById("open-register-form");
+  var closeBtn2 = document.getElementById("register-close");
+  var regForm = document.getElementById("register-form");
+
+  function openRegister() {
+    if (!overlay) return;
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("register-open");
+  }
+
+  function closeRegister() {
+    if (!overlay) return;
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("register-open");
+  }
+
+  if (openBtn) {
+    openBtn.addEventListener("click", openRegister);
+  }
+
+  if (closeBtn2) {
+    closeBtn2.addEventListener("click", closeRegister);
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeRegister();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+        closeRegister();
+      }
+    });
+  }
+
+  if (regForm) {
+    regForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("reg-name").value.trim();
+      var phone = document.getElementById("reg-phone").value.trim();
+      var community = document.getElementById("reg-community").value.trim();
+      var city = document.getElementById("reg-city").value.trim();
+
+      var msg = "New Breathe Camp Registration:%0A%0A"
+        + "Name: " + encodeURIComponent(name) + "%0A"
+        + "Phone: " + encodeURIComponent(phone) + "%0A"
+        + "Office/Community: " + encodeURIComponent(community) + "%0A"
+        + "City: " + encodeURIComponent(city);
+
+      window.open("https://wa.me/919502077555?text=" + msg, "_blank");
+      closeRegister();
+      regForm.reset();
+    });
+  }
 })();
