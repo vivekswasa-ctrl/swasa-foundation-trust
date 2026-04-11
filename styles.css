@@ -755,7 +755,7 @@ a:hover {
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  padding: 1.05rem 1.1rem 1.25rem;
+  padding: 1.05rem 10% 1.25rem;
   box-sizing: border-box;
   min-height: 31rem;
   display: grid;
@@ -2115,11 +2115,18 @@ html.js .reveal-section.is-visible .pillar:nth-child(4) {
 /* --- Nation banner (Breathe free & build the nation) --- */
 
 .nation-banner {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 70%;
   border-radius: 18px;
   overflow: hidden;
   background: linear-gradient(160deg, #0d2137 0%, #1a3a5c 50%, #0d2137 100%);
   box-shadow: 0 12px 48px rgba(10, 30, 60, 0.22), 0 2px 8px rgba(0,0,0,0.10);
+}
+
+@media (max-width: 768px) {
+  .nation-banner {
+    max-width: 100%;
+  }
 }
 
 .nation-banner-images {
@@ -2800,7 +2807,7 @@ body.image-lightbox-open {
 
   .hero-carousel-slide {
     min-height: 26rem;
-    padding: 1.05rem 1.1rem 1.25rem;
+    padding: 1.05rem 8% 1.25rem;
   }
 
   .hero-actions {
