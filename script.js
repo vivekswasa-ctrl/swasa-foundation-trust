@@ -29,7 +29,7 @@
     });
   }
 
-  /* Hero message carousel: advance every ~3.5s, loop 1→6→1…; eased scroll; pauses on hover / focus / touch */
+  /* Hero message carousel: advance every 5s, loop 1→6→1…; eased scroll; pauses on hover / focus / touch */
   var carouselRoot = document.querySelector("[data-carousel]");
   var viewport = document.getElementById("hero-carousel-viewport");
   if (carouselRoot && viewport) {
@@ -37,7 +37,7 @@
     var btnPrev = carouselRoot.querySelector("[data-carousel-prev]");
     var btnNext = carouselRoot.querySelector("[data-carousel-next]");
     var total = dots.length;
-    var AUTO_MS = 3000;
+    var AUTO_MS = 5000;
     var SCROLL_MS = 1100;
     var autoIntervalId = null;
     var scrollAnimToken = 0;
@@ -440,15 +440,17 @@
   buildActivityGallery();
 
   /**
-   * One short line per clipping. Display order: 001–082, then 084–101, then 102 (World Health Day 2026 — last).
-   * File 083.png is unused in the grid so WHD can appear at the end.
+   * Captions for 001–082 (083 unused): rotating short lines by file number.
+   * Clippings 004 & 005 are omitted from the gallery. Two former rotator lines were removed
+   * (replaced with neutral text so other slots in the cycle do not repeat the old wording).
+   * Display order: 102 → 084 (newest tranche first), then 001–082 except 004–005.
    */
   var MEDIA_CAPTION_ROTATORS = [
     "Newspaper coverage — SWASA programmes & lung health.",
     "Press report — community screening & awareness camps.",
     "Media clipping — asthma, allergy, and clean-air advocacy.",
-    "News article — Dr. Vishnun Rao Veerapaneni & SWASA outreach.",
-    "Newspaper feature — World Asthma Day & public education.",
+    "Press briefing — outreach programmes & hospital news coverage.",
+    "Newspaper — awareness walks, rallies, and lung-health messaging.",
     "Press note — COPD awareness & spirometry camps.",
     "Coverage — SWASA Hospital charitable & outreach work.",
     "Article — school health, CSR, and foundation events.",
@@ -458,59 +460,69 @@
     "Clipping — partners, hospitals, and recognition events.",
   ];
 
-  var MEDIA_COUNT = 101;
+  var MEDIA_ADDED_CAPTIONS = [
+    "Telugu press — Swasa Foundation outreach, camps, and respiratory health in the news.",
+    "Newspaper clipping — community awareness and lung-health reporting.",
+    "Burgula (Shadnagar) — free asthma & medical camp by Swasa Foundation & Pragathi Welfare; Dr. Vishnun Rao on rural triggers and care.",
+    "SWASA Hospital 12th anniversary — Dr. Vishnu Rao & Garikapati Narasimha Rao on air pollution, indoor irritants, and respiratory precautions.",
+    "Namasthe Telangana (Health) — pollution, breath, and childhood asthma: triggers and myths.",
+    "Allergy & asthma awareness camp — Saifabad Science College; Swasa Foundation; Dr. Vishnu Rao on pollution, allergens, and early diagnosis.",
+    "World COPD Day — Indira Park, Hyderabad; MP Bura Narsaiah Goud, ‘Swasa Bharat’, smoking & clean air.",
+    "Cherlapally Jail — free camp led by Dr. Vishnu Rao (Amma Shwasa); wheelchairs by Vasavi Women’s Federation.",
+    "Purple Grey Ribbon Run (2014) — UC Science Saifabad & Swasa Foundation; Dr. Vishnu Rao on pollution & spore allergies.",
+    "Miryalaguda — asthma awareness across villages; Dr. Vishnu Rao honoured by Minister Dr. S. Aruna for outreach.",
+    "Urdu — World Health Day 2014: allergy/asthma self-check; Swasa Hospital, Himayatnagar.",
+    "‘City to have immunotherapy soon’ — Dr. Vishnun Rao & Dr. Venu Kandala: allergy screening & immunotherapy at Swasa Hospital.",
+    "Urdu feature — breathlessness & pollution; Swasa School Drive for students’ allergy & asthma care.",
+    "Urdu — free camp at Deaf Enabled Foundation (10th Swasa anniversary); screenings, inhalers, Freedom to Breathe booklets.",
+    "Urdu — allergy, asthma & emotional health: Dr. Vishnu Rao on triggers and wellbeing.",
+    "Telugu — World COPD Day at Indira Park; MP Dr. Boora Narsaiah Goud & MLA Dr. K. Laxman with Swasa Foundation.",
+    "Telugu — Dr. Vishnu Rao on asthma & allergies for students (Oak Valley School, Hyderabad).",
+    "Telugu — World COPD Day 2014 rally at Indira Park; ‘Breathe Free & Build the Healthy Nation’ with Swasa Foundation.",
+  ];
 
-  var MEDIA_CAPTIONS = [];
-  (function buildCaptionList() {
-    var r = MEDIA_CAPTION_ROTATORS;
-    var len = r.length;
-    for (var k = 0; k < 82; k++) {
-      MEDIA_CAPTIONS.push(r[k % len]);
-    }
-    var added = [
-      "Telugu press — Swasa Foundation outreach, camps, and respiratory health in the news.",
-      "Newspaper clipping — community awareness and lung-health reporting.",
-      "Burgula (Shadnagar) — free asthma & medical camp by Swasa Foundation & Pragathi Welfare; Dr. Vishnun Rao on rural triggers and care.",
-      "SWASA Hospital 12th anniversary — Dr. Vishnu Rao & Garikapati Narasimha Rao on air pollution, indoor irritants, and respiratory precautions.",
-      "Namasthe Telangana (Health) — pollution, breath, and childhood asthma: triggers and myths.",
-      "Allergy & asthma awareness camp — Saifabad Science College; Swasa Foundation; Dr. Vishnu Rao on pollution, allergens, and early diagnosis.",
-      "World COPD Day — Indira Park, Hyderabad; MP Bura Narsaiah Goud, ‘Swasa Bharat’, smoking & clean air.",
-      "Cherlapally Jail — free camp led by Dr. Vishnu Rao (Amma Shwasa); wheelchairs by Vasavi Women’s Federation.",
-      "Purple Grey Ribbon Run (2014) — UC Science Saifabad & Swasa Foundation; Dr. Vishnu Rao on pollution & spore allergies.",
-      "Miryalaguda — asthma awareness across villages; Dr. Vishnu Rao honoured by Minister Dr. S. Aruna for outreach.",
-      "Urdu — World Health Day 2014: allergy/asthma self-check; Swasa Hospital, Himayatnagar.",
-      "‘City to have immunotherapy soon’ — Dr. Vishnun Rao & Dr. Venu Kandala: allergy screening & immunotherapy at Swasa Hospital.",
-      "Urdu feature — breathlessness & pollution; Swasa School Drive for students’ allergy & asthma care.",
-      "Urdu — free camp at Deaf Enabled Foundation (10th Swasa anniversary); screenings, inhalers, Freedom to Breathe booklets.",
-      "Urdu — allergy, asthma & emotional health: Dr. Vishnu Rao on triggers and wellbeing.",
-      "Telugu — World COPD Day at Indira Park; MP Dr. Boora Narsaiah Goud & MLA Dr. K. Laxman with Swasa Foundation.",
-      "Telugu — Dr. Vishnu Rao on asthma & allergies for students (Oak Valley School, Hyderabad).",
-      "Telugu — World COPD Day 2014 rally at Indira Park; ‘Breathe Free & Build the Healthy Nation’ with Swasa Foundation.",
-    ];
-    for (var j = 0; j < added.length; j++) {
-      MEDIA_CAPTIONS.push(added[j]);
-    }
-    MEDIA_CAPTIONS.push(
-      "World Health Day 2026 — Vijayakranthi (7 Apr): Dr. Vishnu Rao on science-based health, mind–body wellbeing, and ‘health with science’."
-    );
-  })();
-
-  var MEDIA_FILES_ORDER = (function () {
-    var out = [];
-    var n;
-    for (n = 1; n <= 82; n++) {
-      out.push(padMediaNum(n) + ".png");
-    }
-    for (n = 84; n <= 101; n++) {
-      out.push(padMediaNum(n) + ".png");
-    }
-    out.push("102.png");
-    return out;
-  })();
+  var MEDIA_CAPTION_WHD102 =
+    "World Health Day 2026 — Vijayakranthi (7 Apr): Dr. Vishnu Rao on science-based health, mind–body wellbeing, and ‘health with science’.";
 
   function padMediaNum(n) {
     return n < 10 ? "00" + n : n < 100 ? "0" + n : String(n);
   }
+
+  function mediaFilenameToNum(fname) {
+    var m = String(fname).match(/^0*(\d+)\.png$/i);
+    return m ? parseInt(m[1], 10) : NaN;
+  }
+
+  function captionForMediaFile(fname) {
+    var num = mediaFilenameToNum(fname);
+    if (num >= 1 && num <= 82) {
+      return MEDIA_CAPTION_ROTATORS[(num - 1) % MEDIA_CAPTION_ROTATORS.length];
+    }
+    if (num >= 84 && num <= 101) {
+      return MEDIA_ADDED_CAPTIONS[num - 84] || "";
+    }
+    if (num === 102) {
+      return MEDIA_CAPTION_WHD102;
+    }
+    return "";
+  }
+
+  var MEDIA_FILES_ORDER = (function () {
+    var out = [];
+    var n;
+    for (n = 102; n >= 84; n--) {
+      out.push(padMediaNum(n) + ".png");
+    }
+    for (n = 1; n <= 82; n++) {
+      if (n === 4 || n === 5) {
+        continue;
+      }
+      out.push(padMediaNum(n) + ".png");
+    }
+    return out;
+  })();
+
+  var MEDIA_COUNT = MEDIA_FILES_ORDER.length;
 
   function buildMediaCoverage() {
     var root = document.getElementById("media-coverage-root");
@@ -522,9 +534,10 @@
     var grid = document.createElement("div");
     grid.className = "media-gallery";
 
-    for (var i = 1; i <= MEDIA_COUNT; i++) {
-      var file = MEDIA_FILES_ORDER[i - 1];
-      var captionText = MEDIA_CAPTIONS[i - 1] || "";
+    for (var i = 0; i < MEDIA_COUNT; i++) {
+      var file = MEDIA_FILES_ORDER[i];
+      var captionText = captionForMediaFile(file);
+      var displayIndex = i + 1;
 
       var fig = document.createElement("figure");
       fig.className = "media-clipping-card";
@@ -532,7 +545,7 @@
       var img = document.createElement("img");
       img.className = "media-clipping-img";
       img.src = "images/media/" + file;
-      img.alt = captionText ? "Press clipping: " + captionText : "Press clipping " + i;
+      img.alt = captionText ? "Press clipping: " + captionText : "Press clipping " + displayIndex;
       img.loading = "lazy";
       img.decoding = "async";
       (function (slot, fname) {
@@ -543,7 +556,7 @@
             this.alt = "Missing clipping " + slot;
           }
         });
-      })(i, file);
+      })(displayIndex, file);
 
       var cap = document.createElement("figcaption");
       cap.className = "media-clipping-caption";
@@ -609,7 +622,7 @@
 
   var mediaGrid = document.querySelector(".media-gallery");
   if (mediaGrid) {
-    setupCollapsibleGallery(mediaGrid, 3);
+    setupCollapsibleGallery(mediaGrid, 2);
   }
 
   function initImageLightbox() {
@@ -741,6 +754,36 @@
     }
   }
 
+  /* Our logo: reveal explanation lines 2s apart once section is in view */
+  var logoSection = document.getElementById("our-logo");
+  var logoLinesRoot = logoSection && logoSection.querySelector("[data-logo-lines]");
+  if (logoSection && logoLinesRoot) {
+    var logoReducedMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function startLogoLineSequence() {
+      logoLinesRoot.classList.add("logo-meaning--started");
+    }
+    if (logoReducedMotion) {
+      startLogoLineSequence();
+    } else if ("IntersectionObserver" in window) {
+      var logoIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              startLogoLineSequence();
+              logoIo.disconnect();
+            }
+          });
+        },
+        { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.12 }
+      );
+      logoIo.observe(logoSection);
+    } else {
+      startLogoLineSequence();
+    }
+  }
+
   /* ── Back to top ── */
   var backToTop = document.getElementById("back-to-top");
   if (backToTop) {
@@ -768,7 +811,7 @@
 
   /* ── Registration popup ── */
   var overlay = document.getElementById("register-overlay");
-  var openBtn = document.getElementById("open-register-form");
+  var openRegisterBtns = document.querySelectorAll(".js-open-register");
   var closeBtn2 = document.getElementById("register-close");
   var regForm = document.getElementById("register-form");
 
@@ -786,9 +829,9 @@
     document.body.classList.remove("register-open");
   }
 
-  if (openBtn) {
-    openBtn.addEventListener("click", openRegister);
-  }
+  openRegisterBtns.forEach(function (btn) {
+    btn.addEventListener("click", openRegister);
+  });
 
   if (closeBtn2) {
     closeBtn2.addEventListener("click", closeRegister);
