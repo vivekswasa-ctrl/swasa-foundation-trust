@@ -154,6 +154,7 @@
             aria-roledescription="carousel"
             aria-label="Foundation messages"
             data-carousel
+            data-carousel-main
             data-slide-index="0"
           >
             <div
@@ -291,6 +292,111 @@
               </button>
             </div>
           </div>
+          </div>
+
+          <div class="hero-carousel-shell hero-events-carousel-shell" aria-label="Upcoming events">
+            <div
+              class="hero-carousel hero-events-carousel"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Upcoming SWASA events"
+              data-carousel
+              data-slide-index="0"
+            >
+              <div
+                class="hero-carousel-viewport hero-events-carousel-viewport"
+                id="hero-events-carousel-viewport"
+                tabindex="0"
+                aria-label="Event slides. Swipe or use arrows to move."
+              >
+                <article
+                  class="hero-events-slide hero-events-slide--with-overlay"
+                  data-slide="0"
+                  aria-label="Event 1 of 3"
+                  style="--hero-events-bg: url('images/hero-events/book-launch-may-2026.png')"
+                >
+                  <div class="hero-events-slide__media" aria-hidden="true"></div>
+                  <div class="hero-events-slide__overlay">
+                    <p class="hero-events-slide__top">
+                      You are invited for the upcoming event on 3rd May 2026
+                    </p>
+                    <div class="hero-events-slide__bottom">
+                      <p>SWASA Book Launch at Film nagar club @ 6pm…</p>
+                      <p>Dedicated to the society by Dr. V Vishnun rao for healthy living…</p>
+                    </div>
+                  </div>
+                </article>
+                <article
+                  class="hero-events-slide hero-events-slide--with-overlay"
+                  data-slide="1"
+                  aria-label="Event 2 of 3"
+                  style="--hero-events-bg: url('images/hero-events/idias-symposium-flyer.png')"
+                >
+                  <div class="hero-events-slide__media" aria-hidden="true"></div>
+                  <div class="hero-events-slide__overlay">
+                    <p class="hero-events-slide__top">Grand Launch of SWASA IDIAS…</p>
+                    <p class="hero-events-slide__bottom hero-events-slide__bottom--single">
+                      SWASA Interdiciplinary Interactive Allergy Solutions for all specialities that deal with Allergy &amp; Immunology.
+                    </p>
+                  </div>
+                </article>
+                <article
+                  class="hero-events-slide hero-events-slide--image-only"
+                  data-slide="2"
+                  aria-label="Event 3 of 3"
+                  style="--hero-events-bg: url('images/hero-events/idias-tree-poster.png')"
+                >
+                  <div class="hero-events-slide__media" aria-hidden="true"></div>
+                </article>
+              </div>
+              <div class="hero-carousel-toolbar">
+                <button
+                  type="button"
+                  class="hero-carousel-nav"
+                  data-carousel-prev
+                  aria-label="Previous event"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+                <div class="hero-carousel-dots" role="tablist" aria-label="Choose event">
+                  <button
+                    type="button"
+                    class="hero-carousel-dot"
+                    role="tab"
+                    data-carousel-dot
+                    data-index="0"
+                    aria-selected="true"
+                    aria-label="Event 1 of 3"
+                  ></button>
+                  <button
+                    type="button"
+                    class="hero-carousel-dot"
+                    role="tab"
+                    data-carousel-dot
+                    data-index="1"
+                    aria-selected="false"
+                    aria-label="Event 2 of 3"
+                  ></button>
+                  <button
+                    type="button"
+                    class="hero-carousel-dot"
+                    role="tab"
+                    data-carousel-dot
+                    data-index="2"
+                    aria-selected="false"
+                    aria-label="Event 3 of 3"
+                  ></button>
+                </div>
+                <button
+                  type="button"
+                  class="hero-carousel-nav"
+                  data-carousel-next
+                  aria-label="Next event"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+            </div>
           </div>
         </aside>
       </div>

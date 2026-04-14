@@ -29,10 +29,86 @@
     });
   }
 
-  /* Hero message carousel: advance every 5s, loop 1→6→1…; eased scroll; pauses on hover / focus / touch */
-  var carouselRoot = document.querySelector("[data-carousel]");
-  var viewport = document.getElementById("hero-carousel-viewport");
-  if (carouselRoot && viewport) {
+  /* Hero carousels: auto-advance, eased scroll; pauses on hover / focus / touch. Main carousel only: freedom/nation tagline replay. */
+  var freedomAnimRun = function () {};
+  var nationAnimRun = function () {};
+  var reducedMotionCarousel =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var freedomTagline = document.getElementById("freedom-tagline");
+  if (freedomTagline) {
+    var freedomText = "F r e e d o m  T o  B r e a t h e . . .";
+    freedomTagline.textContent = "";
+    Array.from(freedomText).forEach(function (ch, i) {
+      var span = document.createElement("span");
+      span.className = "freedom-char";
+      span.setAttribute("aria-hidden", "true");
+      span.style.setProperty("--nation-i", String(i));
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      freedomTagline.appendChild(span);
+    });
+
+    if (!reducedMotionCarousel) {
+      freedomAnimRun = function () {
+        freedomTagline.classList.remove("freedom-tagline--play");
+        void freedomTagline.offsetWidth;
+        freedomTagline.classList.add("freedom-tagline--play");
+      };
+    } else {
+      freedomTagline.classList.add("freedom-tagline--play");
+    }
+  }
+
+  var nationTagline = document.getElementById("nation-tagline");
+  if (nationTagline) {
+    var nationText = "B r e a t h e  F r e e  &  B u i l d  T h e  N a t i o n . . .";
+    nationTagline.textContent = "";
+    Array.from(nationText).forEach(function (ch, i) {
+      var span = document.createElement("span");
+      span.className = "nation-char";
+      span.setAttribute("aria-hidden", "true");
+      span.style.setProperty("--nation-i", String(i));
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      nationTagline.appendChild(span);
+    });
+
+    if (!reducedMotionCarousel) {
+      nationAnimRun = function () {
+        nationTagline.classList.remove("nation-tagline--play");
+        void nationTagline.offsetWidth;
+        nationTagline.classList.add("nation-tagline--play");
+      };
+    } else {
+      nationTagline.classList.add("nation-tagline--play");
+    }
+  }
+
+  var carouselVisibilityHandlers = [];
+  var carouselVisibilityListenerAttached = false;
+
+  function attachCarouselVisibilityListener() {
+    if (carouselVisibilityListenerAttached) {
+      return;
+    }
+    carouselVisibilityListenerAttached = true;
+    document.addEventListener("visibilitychange", function () {
+      carouselVisibilityHandlers.forEach(function (pair) {
+        if (document.hidden) {
+          pair.pause();
+        } else {
+          pair.start();
+        }
+      });
+    });
+  }
+
+  function initHeroCarousel(carouselRoot) {
+    var viewport = carouselRoot.querySelector(".hero-carousel-viewport");
+    if (!viewport) {
+      return;
+    }
+
     var dots = carouselRoot.querySelectorAll("[data-carousel-dot]");
     var btnPrev = carouselRoot.querySelector("[data-carousel-prev]");
     var btnNext = carouselRoot.querySelector("[data-carousel-next]");
@@ -41,9 +117,8 @@
     var SCROLL_MS = 1100;
     var autoIntervalId = null;
     var scrollAnimToken = 0;
-    var reducedMotion =
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var isMainCarousel = carouselRoot.hasAttribute("data-carousel-main");
+    var prevSettledIdx = -1;
 
     function slideWidth() {
       return viewport.clientWidth;
@@ -62,7 +137,7 @@
     }
 
     function scrollViewportToX(targetLeft, durationMs, onDone) {
-      if (reducedMotion) {
+      if (reducedMotionCarousel) {
         viewport.scrollLeft = targetLeft;
         if (onDone) {
           onDone();
@@ -129,7 +204,7 @@
 
     function startAutoAdvance() {
       pauseAutoAdvance();
-      if (reducedMotion || total <= 1) {
+      if (reducedMotionCarousel || total <= 1) {
         return;
       }
       autoIntervalId = window.setInterval(function () {
@@ -142,10 +217,6 @@
       startAutoAdvance();
     }
 
-    var nationAnimRun = function () {};
-    var freedomAnimRun = function () {};
-    var prevHeroCarouselIdx = -1;
-
     var scrollTimer;
     viewport.addEventListener(
       "scroll",
@@ -154,13 +225,15 @@
         scrollTimer = setTimeout(function () {
           syncDots();
           var idx = currentIndex();
-          if (idx === 4 && prevHeroCarouselIdx !== 4) {
-            freedomAnimRun();
+          if (isMainCarousel) {
+            if (idx === 4 && prevSettledIdx !== 4) {
+              freedomAnimRun();
+            }
+            if (idx === 5 && prevSettledIdx !== 5) {
+              nationAnimRun();
+            }
           }
-          if (idx === 5 && prevHeroCarouselIdx !== 5) {
-            nationAnimRun();
-          }
-          prevHeroCarouselIdx = idx;
+          prevSettledIdx = idx;
         }, 80);
       },
       { passive: true }
@@ -248,66 +321,17 @@
       { passive: true }
     );
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        pauseAutoAdvance();
-      } else {
-        startAutoAdvance();
-      }
-    });
+    carouselVisibilityHandlers.push({ pause: pauseAutoAdvance, start: startAutoAdvance });
+    attachCarouselVisibilityListener();
 
     syncDots();
     startAutoAdvance();
-    prevHeroCarouselIdx = currentIndex();
-
-    var freedomTagline = document.getElementById("freedom-tagline");
-    if (freedomTagline) {
-      var freedomText = "F r e e d o m  T o  B r e a t h e . . .";
-      freedomTagline.textContent = "";
-      Array.from(freedomText).forEach(function (ch, i) {
-        var span = document.createElement("span");
-        span.className = "freedom-char";
-        span.setAttribute("aria-hidden", "true");
-        span.style.setProperty("--nation-i", String(i));
-        span.textContent = ch === " " ? "\u00a0" : ch;
-        freedomTagline.appendChild(span);
-      });
-
-      if (!reducedMotion) {
-        freedomAnimRun = function () {
-          freedomTagline.classList.remove("freedom-tagline--play");
-          void freedomTagline.offsetWidth;
-          freedomTagline.classList.add("freedom-tagline--play");
-        };
-      } else {
-        freedomTagline.classList.add("freedom-tagline--play");
-      }
-    }
-
-    var nationTagline = document.getElementById("nation-tagline");
-    if (nationTagline) {
-      var nationText = "B r e a t h e  F r e e  &  B u i l d  T h e  N a t i o n . . .";
-      nationTagline.textContent = "";
-      Array.from(nationText).forEach(function (ch, i) {
-        var span = document.createElement("span");
-        span.className = "nation-char";
-        span.setAttribute("aria-hidden", "true");
-        span.style.setProperty("--nation-i", String(i));
-        span.textContent = ch === " " ? "\u00a0" : ch;
-        nationTagline.appendChild(span);
-      });
-
-      if (!reducedMotion) {
-        nationAnimRun = function () {
-          nationTagline.classList.remove("nation-tagline--play");
-          void nationTagline.offsetWidth;
-          nationTagline.classList.add("nation-tagline--play");
-        };
-      } else {
-        nationTagline.classList.add("nation-tagline--play");
-      }
-    }
+    prevSettledIdx = currentIndex();
   }
+
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    initHeroCarousel(root);
+  });
 
   /**
    * One line per photo. Files 040–050 are inserted after 020 in display order (middle of gallery).
