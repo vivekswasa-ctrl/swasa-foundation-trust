@@ -1221,92 +1221,77 @@ body.register-open {
   }
 }
 
-/* Second hero carousel: upcoming events (portrait, below main carousel) */
-.hero-events-carousel-shell {
+/* Three event posters in a row (intrinsic image dimensions; scroll horizontally if needed) */
+.hero-events-row-shell {
   margin-top: 1cm;
-  width: fit-content;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: linear-gradient(180deg, rgba(238, 245, 251, 0.55) 0%, rgba(255, 255, 255, 0.42) 100%);
-}
-
-.hero-events-carousel-shell::before {
-  background:
-    linear-gradient(180deg, rgba(15, 28, 40, 0.08) 0%, transparent 40%, rgba(15, 28, 40, 0.06) 100%),
-    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(255, 255, 255, 0.35), transparent 60%);
-}
-
-.hero-events-carousel {
-  width: fit-content;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: center;
-}
-
-/*
- * Frame matches the largest source image (idias-symposium-flyer.png): 726 × 1024 px.
- * Other slides are the same height (1024px) and slightly narrower; they scale inside with contain.
- */
-.hero-events-carousel-viewport {
-  aspect-ratio: 726 / 1024;
-  box-sizing: border-box;
-  width: min(726px, 100%);
-  max-width: 100%;
-  height: auto;
-  min-height: 0;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
-  align-items: stretch;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(37, 99, 168, 0.12);
-}
-
-.hero-events-slide {
-  flex: 0 0 100%;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  min-height: 100%;
-  height: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.65rem 0 0.35rem;
   box-sizing: border-box;
-  padding: 0;
+  background: linear-gradient(180deg, rgba(238, 245, 251, 0.55) 0%, rgba(255, 255, 255, 0.42) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(37, 99, 168, 0.12);
+  box-shadow: 0 12px 36px rgba(30, 77, 122, 0.1);
+}
+
+.hero-events-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.65rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0.65rem 0.85rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(37, 99, 168, 0.28) transparent;
+}
+
+.hero-events-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.hero-events-row::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 168, 0.28);
+  border-radius: 999px;
+}
+
+.hero-events-card {
+  flex: 0 0 auto;
   margin: 0;
+  scroll-snap-align: start;
+}
+
+.hero-events-card__figure {
+  position: relative;
   display: block;
-  border-radius: 12px;
+  line-height: 0;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 6px 22px rgba(30, 77, 122, 0.12);
 }
 
-.hero-events-slide__media {
-  position: absolute;
-  inset: 0;
-  background-image: var(--hero-events-bg);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: #e8eef5;
+.hero-events-card__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: none;
+  vertical-align: top;
 }
 
-.hero-events-slide--with-overlay .hero-events-slide__media {
-  background-color: #dfe8f2;
-}
-
-.hero-events-slide--image-only .hero-events-slide__media {
-  background-color: #e8eef5;
-}
-
-.hero-events-slide__overlay {
+.hero-events-card__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.85rem 0.75rem 1rem;
+  padding: 0.85rem 0.65rem 1rem;
   box-sizing: border-box;
   pointer-events: none;
   background: linear-gradient(
@@ -1318,11 +1303,11 @@ body.register-open {
   );
 }
 
-.hero-events-slide__top {
+.hero-events-card__top {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(0.82rem, 2.8vw, 0.98rem);
+  font-size: clamp(0.75rem, 1.35vw, 0.95rem);
   line-height: 1.35;
   color: #f8fbff;
   text-align: center;
@@ -1331,15 +1316,15 @@ body.register-open {
     0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
-.hero-events-slide__bottom {
+.hero-events-card__bottom {
   margin: 0;
   text-align: center;
 }
 
-.hero-events-slide__bottom p {
-  margin: 0 0 0.45rem;
+.hero-events-card__bottom p {
+  margin: 0 0 0.4rem;
   font-family: var(--font-body);
-  font-size: clamp(0.72rem, 2.2vw, 0.84rem);
+  font-size: clamp(0.68rem, 1.15vw, 0.8rem);
   font-weight: 600;
   line-height: 1.45;
   color: rgba(255, 252, 245, 0.96);
@@ -1348,20 +1333,14 @@ body.register-open {
     0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
-.hero-events-slide__bottom p:last-child {
+.hero-events-card__bottom p:last-child {
   margin-bottom: 0;
 }
 
-.hero-events-slide__bottom--single {
+.hero-events-card__bottom--single {
   margin: 0 !important;
-  font-size: clamp(0.7rem, 2.1vw, 0.82rem) !important;
+  font-size: clamp(0.65rem, 1.1vw, 0.78rem) !important;
   line-height: 1.5 !important;
-}
-
-@media (max-width: 959px) {
-  .hero-events-carousel-viewport {
-    width: min(726px, calc(100vw - 2rem));
-  }
 }
 
 .btn {
@@ -3319,10 +3298,10 @@ body.image-lightbox-open {
     min-height: 26rem;
   }
 
-  .hero-carousel-viewport.hero-events-carousel-viewport {
-    min-height: 0;
-    width: min(726px, calc(100vw - 2rem));
-    max-width: 100%;
+  .hero-events-row {
+    justify-content: flex-start;
+    padding-left: max(0.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(0.5rem, env(safe-area-inset-right, 0px));
   }
 
   .hero-carousel-slide {
