@@ -1246,16 +1246,15 @@ body.register-open {
 }
 
 /*
- * Portrait frame: drive size from HEIGHT so aspect-ratio can set WIDTH (narrow).
- * (max-height + full width was making a short wide “landscape” strip.)
+ * Frame matches the largest source image (idias-symposium-flyer.png): 726 × 1024 px.
+ * Other slides are the same height (1024px) and slightly narrower; they scale inside with contain.
  */
 .hero-events-carousel-viewport {
-  --hero-events-portrait-h: min(75dvh, 75vh, 38rem);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 726 / 1024;
   box-sizing: border-box;
-  height: var(--hero-events-portrait-h);
-  width: auto;
-  max-width: min(22rem, 100%);
+  width: min(726px, 100%);
+  max-width: 100%;
+  height: auto;
   min-height: 0;
   margin-left: auto;
   margin-right: auto;
@@ -1286,18 +1285,18 @@ body.register-open {
   position: absolute;
   inset: 0;
   background-image: var(--hero-events-bg);
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #e8eef5;
 }
 
 .hero-events-slide--with-overlay .hero-events-slide__media {
-  transform: scale(1.01);
+  background-color: #dfe8f2;
 }
 
 .hero-events-slide--image-only .hero-events-slide__media {
-  background-size: cover;
-  background-position: center center;
+  background-color: #e8eef5;
 }
 
 .hero-events-slide__overlay {
@@ -1361,8 +1360,7 @@ body.register-open {
 
 @media (max-width: 959px) {
   .hero-events-carousel-viewport {
-    --hero-events-portrait-h: min(68dvh, 68vh, 34rem);
-    max-width: min(20rem, calc(100vw - 2rem));
+    width: min(726px, calc(100vw - 2rem));
   }
 }
 
@@ -3323,8 +3321,8 @@ body.image-lightbox-open {
 
   .hero-carousel-viewport.hero-events-carousel-viewport {
     min-height: 0;
-    --hero-events-portrait-h: min(62dvh, 62vh, 30rem);
-    max-width: min(18.5rem, calc(100vw - 1.75rem));
+    width: min(726px, calc(100vw - 2rem));
+    max-width: 100%;
   }
 
   .hero-carousel-slide {
