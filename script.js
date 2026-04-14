@@ -863,7 +863,7 @@
         + "Office/Community: " + encodeURIComponent(community) + "%0A"
         + "City: " + encodeURIComponent(city);
 
-      window.open("https://wa.me/919502077555?text=" + msg, "_blank");
+      window.open("https://wa.me/919676764968?text=" + msg, "_blank");
       closeRegister();
       regForm.reset();
     });
