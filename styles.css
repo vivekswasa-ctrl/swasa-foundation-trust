@@ -1221,9 +1221,27 @@ body.register-open {
   }
 }
 
+/* Flagship posters: heading + row (extra 2cm below message carousel vs earlier layout) */
+.hero-flagship {
+  margin-top: 3cm;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-flagship__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-blue-deep);
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
 /* Three event posters in a row — 60% of original dimensions (40% smaller); horizontal scroll */
 .hero-events-row-shell {
-  margin-top: 1cm;
+  margin-top: 0;
   width: 100%;
   max-width: 100%;
   margin-left: auto;
