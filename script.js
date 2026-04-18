@@ -888,15 +888,6 @@
     });
   }
 
-  /* ── Announcement bar close ── */
-  var announceBar = document.getElementById("announce-bar");
-  var announceClose = document.getElementById("announce-close");
-  if (announceBar && announceClose) {
-    announceClose.addEventListener("click", function () {
-      announceBar.classList.add("is-hidden");
-    });
-  }
-
   /* ── Registration popup ── */
   var overlay = document.getElementById("register-overlay");
   var openRegisterBtns = document.querySelectorAll(".js-open-register");
