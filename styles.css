@@ -1221,32 +1221,29 @@ body.register-open {
   }
 }
 
-/* Flagship posters: heading + row (extra 2cm below message carousel vs earlier layout) */
-.hero-flagship {
+/* Book launch flyer below message carousel (same top spacing as prior flagship block) */
+.hero-book-launch {
   margin-top: 3cm;
   width: 100%;
   max-width: 100%;
 }
 
-.hero-flagship__heading {
+.hero-book-launch__heading {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
   font-weight: 700;
   text-align: center;
   color: var(--color-blue-deep);
-  margin: 0 0 0.9rem;
+  margin: 0 0 1rem;
   letter-spacing: -0.02em;
   line-height: 1.25;
 }
 
-/* Three event posters in a row — 60% of original dimensions (40% smaller); horizontal scroll */
-.hero-events-row-shell {
-  margin-top: 0;
-  width: 100%;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.65rem 0 0.35rem;
+.hero-book-launch__figure {
+  margin: 0;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
   background: linear-gradient(180deg, rgba(238, 245, 251, 0.55) 0%, rgba(255, 255, 255, 0.42) 100%);
   border-radius: 14px;
@@ -1254,123 +1251,13 @@ body.register-open {
   box-shadow: 0 12px 36px rgba(30, 77, 122, 0.1);
 }
 
-.hero-events-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.65rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0.5rem 0.65rem 0.85rem;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: auto;
-  scrollbar-color: rgba(30, 77, 122, 0.65) rgba(37, 99, 168, 0.16);
-}
-
-.hero-events-row::-webkit-scrollbar {
-  height: 14px;
-}
-
-.hero-events-row::-webkit-scrollbar-track {
-  background: rgba(37, 99, 168, 0.18);
-  border-radius: 8px;
-  margin: 0 0.35rem;
-}
-
-.hero-events-row::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(37, 99, 168, 0.88) 0%, rgba(24, 72, 128, 0.95) 100%);
-  border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-}
-
-.hero-events-row::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(30, 90, 160, 0.95) 0%, rgba(20, 60, 115, 1) 100%);
-}
-
-.hero-events-card {
-  flex: 0 0 auto;
-  margin: 0;
-  scroll-snap-align: start;
-}
-
-.hero-events-card__figure {
-  position: relative;
-  display: block;
-  line-height: 0;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 6px 22px rgba(30, 77, 122, 0.12);
-}
-
-.hero-events-card__img {
+.hero-book-launch__img {
   display: block;
   width: auto;
-  height: calc(1024px * 0.6);
-  max-width: none;
-  vertical-align: top;
-}
-
-.hero-events-card__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.85rem 0.65rem 1rem;
-  box-sizing: border-box;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 20, 32, 0.72) 0%,
-    rgba(8, 20, 32, 0.12) 38%,
-    rgba(8, 20, 32, 0.1) 58%,
-    rgba(8, 20, 32, 0.78) 100%
-  );
-}
-
-.hero-events-card__top {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(0.75rem, 1.35vw, 0.95rem);
-  line-height: 1.35;
-  color: #f8fbff;
-  text-align: center;
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.55),
-    0 1px 0 rgba(0, 0, 0, 0.35);
-}
-
-.hero-events-card__bottom {
-  margin: 0;
-  text-align: center;
-}
-
-.hero-events-card__bottom p {
-  margin: 0 0 0.4rem;
-  font-family: var(--font-body);
-  font-size: clamp(0.68rem, 1.15vw, 0.8rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: rgba(255, 252, 245, 0.96);
-  text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(0, 0, 0, 0.3);
-}
-
-.hero-events-card__bottom p:last-child {
-  margin-bottom: 0;
-}
-
-.hero-events-card__bottom--single {
-  margin: 0 !important;
-  font-size: clamp(0.65rem, 1.1vw, 0.78rem) !important;
-  line-height: 1.5 !important;
+  height: auto;
+  max-width: min(683px, 100%);
+  border-radius: 10px;
+  box-shadow: 0 6px 22px rgba(30, 77, 122, 0.14);
 }
 
 .btn {
@@ -3326,12 +3213,6 @@ body.image-lightbox-open {
 
   .hero-carousel-viewport {
     min-height: 26rem;
-  }
-
-  .hero-events-row {
-    justify-content: flex-start;
-    padding-left: max(0.5rem, env(safe-area-inset-left, 0px));
-    padding-right: max(0.5rem, env(safe-area-inset-right, 0px));
   }
 
   .hero-carousel-slide {
