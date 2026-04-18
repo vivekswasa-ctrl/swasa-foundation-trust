@@ -1266,7 +1266,8 @@ body.register-open {
   display: block;
   width: auto;
   height: auto;
-  max-width: min(683px, 100%);
+  /* Intrinsic invite is 683px wide; show at 75% (25% smaller) */
+  max-width: min(calc(683px * 0.75), 100%);
   border-radius: 10px;
   box-shadow: 0 6px 22px rgba(30, 77, 122, 0.14);
 }
