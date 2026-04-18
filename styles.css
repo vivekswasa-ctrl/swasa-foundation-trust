@@ -251,7 +251,18 @@ a:hover {
   font-family: var(--font-body);
   font-size: 0.9rem;
   color: var(--color-ink-muted);
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.85rem;
+  line-height: 1.55;
+}
+
+.register-modal__hint {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-blue-deep);
 }
 
 .register-form {
@@ -3336,7 +3347,7 @@ body.image-lightbox-open {
   }
 }
 
-/* ── Register for camps (left FAB, mirrors WhatsApp) ── */
+/* ── Collaborate for an event (left FAB; opens enquiry modal) ── */
 
 .register-camps-fab {
   position: fixed;
@@ -3383,7 +3394,10 @@ body.image-lightbox-open {
 }
 
 .register-camps-fab__label {
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 11.5rem;
+  line-height: 1.22;
+  text-align: left;
 }
 
 @media (max-width: 480px) {
