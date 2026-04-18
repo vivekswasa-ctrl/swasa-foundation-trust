@@ -414,6 +414,26 @@
     return out;
   })();
 
+  /* Allergy Symposium IDIAS — same grid as other activity photos; appear after “Show more” (last slots). */
+  var ACTIVITY_SYMPOSIUM_IDIAS_FILES = [
+    "symposium-idias/01.png",
+    "symposium-idias/02.png",
+    "symposium-idias/03.png",
+    "symposium-idias/04.png",
+    "symposium-idias/05.png",
+  ];
+  var ACTIVITY_SYMPOSIUM_IDIAS_CAPTIONS = [
+    "Allergy Symposium IDIAS — Dr. Vishnun Rao with SWASA Foundation display; 50+ doctors attended, IPS Sirisha as chief guest.",
+    "Allergy Symposium IDIAS — group photo with SWASA banners and IDIAS placards (Treat the root, not the fruit).",
+    "Allergy Symposium IDIAS — dignitaries and doctors on stage; inaugural session and logo launch.",
+    "Allergy Symposium IDIAS — address from the podium; interdisciplinary allergy solutions.",
+    "Allergy Symposium IDIAS — large group with IDIAS placards; SWASA Foundation event.",
+  ];
+  ACTIVITY_SYMPOSIUM_IDIAS_FILES.forEach(function (symFile, symIdx) {
+    ACTIVITY_FILES_ORDER.push(symFile);
+    ACTIVITY_CAPTIONS.push(ACTIVITY_SYMPOSIUM_IDIAS_CAPTIONS[symIdx]);
+  });
+
   function buildActivityGallery() {
     var root = document.getElementById("activity-gallery");
     if (!root) {
