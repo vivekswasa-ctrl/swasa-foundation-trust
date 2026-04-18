@@ -798,6 +798,50 @@
     }
   }
 
+  /* Chairman’s vision: “SWASA IDIAS” heading — one letter at a time when #vision enters view */
+  var visionSection = document.getElementById("vision");
+  var idiasHeadingEl = document.getElementById("vision-idias-heading");
+  if (visionSection && idiasHeadingEl && !idiasHeadingEl.dataset.idiasBuilt) {
+    idiasHeadingEl.dataset.idiasBuilt = "1";
+    var idiasPhrase = "SWASA IDIAS";
+    idiasHeadingEl.textContent = "";
+    Array.from(idiasPhrase).forEach(function (ch, i) {
+      var span = document.createElement("span");
+      span.className = "vision-idias-char";
+      span.style.setProperty("--ci", String(i));
+      span.setAttribute("aria-hidden", "true");
+      span.textContent = ch === " " ? "\u00a0" : ch;
+      idiasHeadingEl.appendChild(span);
+    });
+
+    var idiasReducedMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function playIdiasHeading() {
+      idiasHeadingEl.classList.add("vision-idias-heading--play");
+    }
+
+    if (idiasReducedMotion) {
+      playIdiasHeading();
+    } else if ("IntersectionObserver" in window) {
+      var idiasIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              playIdiasHeading();
+              idiasIo.disconnect();
+            }
+          });
+        },
+        { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.1 }
+      );
+      idiasIo.observe(visionSection);
+    } else {
+      playIdiasHeading();
+    }
+  }
+
   /* Our logo: reveal explanation lines 2s apart once section is in view */
   var logoSection = document.getElementById("our-logo");
   var logoLinesRoot = logoSection && logoSection.querySelector("[data-logo-lines]");
