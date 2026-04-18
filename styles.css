@@ -105,13 +105,13 @@ a:hover {
 /* ── Announcement bar ── */
 
 .announce-bar {
-  background: linear-gradient(135deg, #e8f2fb 0%, #dff6ea 55%, #e4f5f0 100%);
+  background: transparent;
   color: #1a2f42;
   padding: 0.85rem 1.5rem;
   position: relative;
   z-index: 800;
   text-align: center;
-  border-bottom: 1px solid rgba(37, 99, 168, 0.12);
+  border-bottom: none;
 }
 
 .announce-bar.is-hidden {
