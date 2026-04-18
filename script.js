@@ -878,13 +878,14 @@
       e.preventDefault();
       var name = document.getElementById("reg-name").value.trim();
       var phone = document.getElementById("reg-phone").value.trim();
-      var community = document.getElementById("reg-community").value.trim();
+      var orgEl = document.getElementById("reg-organization");
+      var organization = orgEl ? orgEl.value.trim() : "";
       var city = document.getElementById("reg-city").value.trim();
 
-      var msg = "New Breathe Camp Registration:%0A%0A"
-        + "Name: " + encodeURIComponent(name) + "%0A"
+      var msg = "Event collaboration enquiry:%0A%0A"
+        + "Contact person: " + encodeURIComponent(name) + "%0A"
         + "Phone: " + encodeURIComponent(phone) + "%0A"
-        + "Office/Community: " + encodeURIComponent(community) + "%0A"
+        + "Foundation/Company: " + encodeURIComponent(organization) + "%0A"
         + "City: " + encodeURIComponent(city);
 
       window.open("https://wa.me/919676764968?text=" + msg, "_blank");

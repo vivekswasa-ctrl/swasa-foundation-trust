@@ -112,26 +112,29 @@
   <div class="register-overlay" id="register-overlay" aria-hidden="true">
     <div class="register-modal" role="dialog" aria-modal="true" aria-labelledby="register-title">
       <button type="button" class="register-modal__close" id="register-close" aria-label="Close">&times;</button>
-      <h2 class="register-modal__title" id="register-title">Book a Free Breathe Camp</h2>
-      <p class="register-modal__sub">Fill in your details and we will get back to you</p>
-      <form class="register-form" id="register-form">
+      <h2 class="register-modal__title" id="register-title">Collaborate for an event</h2>
+      <p class="register-modal__sub">
+        Partner with Swasa Foundation Trust for awareness drives, screening camps, talks, or CSR-aligned programmes. Share your details and we will connect with you.
+      </p>
+      <p class="register-modal__hint" id="register-hint">Your contact information</p>
+      <form class="register-form" id="register-form" aria-describedby="register-hint">
         <div class="register-form__field">
-          <label for="reg-name">Full Name</label>
-          <input type="text" id="reg-name" name="name" required placeholder="Your name" />
+          <label for="reg-name">Contact person</label>
+          <input type="text" id="reg-name" name="name" required placeholder="Full name" />
         </div>
         <div class="register-form__field">
-          <label for="reg-phone">Phone Number</label>
+          <label for="reg-phone">Phone number</label>
           <input type="tel" id="reg-phone" name="phone" required placeholder="+91 98765 43210" />
         </div>
         <div class="register-form__field">
-          <label for="reg-community">Office / Community</label>
-          <input type="text" id="reg-community" name="community" required placeholder="Company or community name" />
+          <label for="reg-organization">Foundation / company name:</label>
+          <input type="text" id="reg-organization" name="organization" required placeholder="Registered name of foundation or company" />
         </div>
         <div class="register-form__field">
           <label for="reg-city">City</label>
-          <input type="text" id="reg-city" name="city" required placeholder="Your city" />
+          <input type="text" id="reg-city" name="city" required placeholder="City you are based in" />
         </div>
-        <button type="submit" class="register-form__submit">Register via WhatsApp</button>
+        <button type="submit" class="register-form__submit">Send enquiry via WhatsApp</button>
       </form>
     </div>
   </div>
@@ -811,7 +814,7 @@
     id="open-register-camps-fab"
     aria-haspopup="dialog"
     aria-controls="register-overlay"
-    aria-label="Register for camps — book a free Breathe Camp"
+    aria-label="Collaborate for an event — open enquiry form"
   >
     <svg class="register-camps-fab__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path
@@ -822,7 +825,7 @@
         stroke-linejoin="round"
       />
     </svg>
-    <span class="register-camps-fab__label">Register for camps</span>
+    <span class="register-camps-fab__label">Collaborate for an event</span>
   </button>
 
   <a
