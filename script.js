@@ -723,7 +723,11 @@
       if (t.tagName !== "IMG") {
         return;
       }
-      if (!t.classList.contains("activity-photo-img") && !t.classList.contains("media-clipping-img")) {
+      if (
+        !t.classList.contains("activity-photo-img") &&
+        !t.classList.contains("media-clipping-img") &&
+        !t.classList.contains("clinical-pillar__img")
+      ) {
         return;
       }
       var src = t.getAttribute("src") || t.src || "";
@@ -746,6 +750,11 @@
       mediaRoot.addEventListener("click", onGalleryClick);
     }
 
+    var clinicalPillarsGallery = document.querySelector("[data-clinical-pillars]");
+    if (clinicalPillarsGallery) {
+      clinicalPillarsGallery.addEventListener("click", onGalleryClick);
+    }
+
     closeBtn.addEventListener("click", closeLightbox);
     if (backdrop) {
       backdrop.addEventListener("click", closeLightbox);
@@ -759,6 +768,39 @@
   }
 
   initImageLightbox();
+
+  var clinicalPillarsRoot = document.querySelector("[data-clinical-pillars]");
+  if (clinicalPillarsRoot) {
+    var pillarItems = clinicalPillarsRoot.querySelectorAll(".clinical-pillar");
+    clinicalPillarsRoot.addEventListener("click", function (e) {
+      var tab = e.target.closest(".clinical-pillar__tab");
+      if (!tab || !clinicalPillarsRoot.contains(tab)) {
+        return;
+      }
+      var pillar = tab.closest(".clinical-pillar");
+      var panel = pillar ? pillar.querySelector(".clinical-pillar__panel") : null;
+      if (!pillar || !panel) {
+        return;
+      }
+      var wasOpen = pillar.classList.contains("is-open");
+      pillarItems.forEach(function (p) {
+        p.classList.remove("is-open");
+        var tBtn = p.querySelector(".clinical-pillar__tab");
+        var pnl = p.querySelector(".clinical-pillar__panel");
+        if (tBtn) {
+          tBtn.setAttribute("aria-expanded", "false");
+        }
+        if (pnl) {
+          pnl.setAttribute("aria-hidden", "true");
+        }
+      });
+      if (!wasOpen) {
+        pillar.classList.add("is-open");
+        tab.setAttribute("aria-expanded", "true");
+        panel.setAttribute("aria-hidden", "false");
+      }
+    });
+  }
 
   var siteHeader = document.getElementById("site-header");
   function updateHeaderScroll() {

@@ -1925,6 +1925,174 @@ html.js .reveal-section.is-visible .pillar:nth-child(4) {
   }
 }
 
+/* Clinical pillars — stacked tabs in Our focus (#focus) */
+
+.clinical-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0 auto 2.35rem;
+  max-width: 44rem;
+}
+
+.clinical-pillar {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(37, 99, 168, 0.14);
+  box-shadow: 0 4px 20px rgba(30, 77, 122, 0.07);
+  background: var(--color-surface);
+}
+
+.clinical-pillar__tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.35rem;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(1.32rem, 3.2vw, 1.62rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-blue-deep);
+  text-align: left;
+  background: linear-gradient(118deg, rgba(225, 238, 252, 0.95) 0%, #fff 46%, rgba(248, 252, 255, 0.98) 100%);
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clinical-pillar__tab:hover {
+  color: #163d5e;
+  background: linear-gradient(118deg, rgba(210, 230, 248, 0.98) 0%, #fff 50%, #f8fbfe 100%);
+}
+
+.clinical-pillar__tab:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  z-index: 1;
+  position: relative;
+}
+
+.clinical-pillar.is-open .clinical-pillar__tab {
+  background: linear-gradient(118deg, rgba(227, 241, 236, 0.55) 0%, #fff 52%, #fafefe 100%);
+  box-shadow: inset 0 -1px 0 rgba(37, 99, 168, 0.1);
+  color: var(--color-accent);
+}
+
+.clinical-pillar__label {
+  flex: 1;
+  min-width: 0;
+}
+
+.clinical-pillar__chev {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(37, 99, 168, 0.08);
+  color: var(--color-blue-deep);
+}
+
+.clinical-pillar__chev::after {
+  content: "";
+  display: block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: -0.15rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.clinical-pillar.is-open .clinical-pillar__chev::after {
+  transform: rotate(225deg);
+  margin-top: 0.12rem;
+}
+
+.clinical-pillar.is-open .clinical-pillar__chev {
+  background: rgba(45, 106, 92, 0.12);
+  color: var(--color-accent);
+}
+
+.clinical-pillar__panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.5s var(--ease-out-expo),
+    opacity 0.35s ease;
+}
+
+.clinical-pillar.is-open .clinical-pillar__panel {
+  max-height: min(120rem, 200vh);
+  opacity: 1;
+}
+
+.clinical-pillar__inner {
+  padding: 0 1.1rem 1.35rem;
+  border-top: 1px solid rgba(37, 99, 168, 0.08);
+}
+
+.clinical-pillar__figure {
+  margin: 1rem 0 0;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eef4f8 0%, #e4ecf4 100%);
+  border: 1px solid rgba(37, 99, 168, 0.1);
+}
+
+.clinical-pillar__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 640px);
+  object-fit: contain;
+  object-position: center top;
+  cursor: zoom-in;
+}
+
+.clinical-pillar__body {
+  padding: 1.15rem 0.15rem 0.25rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--color-ink-muted);
+}
+
+.clinical-pillar__body p {
+  margin: 0 0 0.85rem;
+}
+
+.clinical-pillar__body p:last-child {
+  margin-bottom: 0;
+}
+
+.clinical-pillar__body strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinical-pillar__panel {
+    transition: none;
+  }
+
+  .clinical-pillar__chev::after {
+    transition: none;
+  }
+}
+
 /* Disease grid */
 
 .section-focus {
