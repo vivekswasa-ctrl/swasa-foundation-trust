@@ -20,7 +20,7 @@
   --radius: 12px;
   --shadow: 0 12px 36px rgba(45, 72, 118, 0.1);
   --shadow-strong: 0 18px 48px rgba(45, 72, 118, 0.14);
-  --header-h: 120px;
+  --header-h: 136px;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --reveal-duration: 0.75s;
 }
@@ -271,8 +271,8 @@ body.register-open {
   display: block;
   height: auto;
   width: auto;
-  max-height: 110px;
-  max-width: min(580px, 72vw);
+  max-height: 132px;
+  max-width: min(640px, 76vw);
   object-fit: contain;
   object-position: left center;
   image-rendering: auto;
@@ -1856,7 +1856,7 @@ html.js .reveal-section.is-visible .pillar:nth-child(4) {
 
 .logo-meaning__img {
   display: block;
-  width: clamp(7.5rem, 22vw, 10.5rem);
+  width: clamp(8.5rem, 26vw, 12.5rem);
   height: auto;
   margin: 0 auto;
   filter: drop-shadow(0 8px 24px rgba(45, 72, 118, 0.12));
