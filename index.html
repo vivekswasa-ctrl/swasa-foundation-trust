@@ -62,9 +62,9 @@
         <img
           class="logo-img"
           src="images/logo-swasa-foundation-trust.png"
-          alt="Swasa Foundation Trust"
-          width="504"
-          height="464"
+          alt="Swasa Foundation Trust — bird, five stars, Breathe Free &amp; Build The Nation"
+          width="1024"
+          height="1024"
           decoding="async"
         />
       </a>
@@ -382,9 +382,9 @@
             <img
               class="logo-meaning__img"
               src="images/logo-swasa-foundation-trust.png"
-              width="200"
-              height="200"
-              alt="SWASA Foundation Trust emblem: bird in flight above five stars"
+              width="1024"
+              height="1024"
+              alt="SWASA Foundation Trust emblem: bird in flight above five stars, with tagline Breathe Free &amp; Build The Nation"
               decoding="async"
             />
           </div>
@@ -410,130 +410,108 @@
           Our work spans common and serious lung conditions. Each name below represents real people—and our commitment to science, compassion, and action.
         </p>
 
-        <div class="clinical-pillars" data-clinical-pillars aria-label="Clinical focus areas">
-          <div class="clinical-pillar">
+        <div class="clinical-tabs" data-clinical-tabs aria-label="Clinical focus areas">
+          <div class="clinical-tabs__list" role="tablist">
             <button
               type="button"
-              class="clinical-pillar__tab"
+              class="clinical-tabs__tab is-active"
+              role="tab"
               id="clinical-tab-allergy"
-              aria-expanded="false"
+              aria-selected="true"
               aria-controls="clinical-panel-allergy"
+              tabindex="0"
             >
-              <span class="clinical-pillar__label">Allergy</span>
-              <span class="clinical-pillar__chev" aria-hidden="true"></span>
+              Allergy
             </button>
-            <div
-              class="clinical-pillar__panel"
-              id="clinical-panel-allergy"
-              role="region"
-              aria-labelledby="clinical-tab-allergy"
-              aria-hidden="true"
-            >
-              <div class="clinical-pillar__inner">
-                <figure class="clinical-pillar__figure">
-                  <img
-                    class="clinical-pillar__img"
-                    src="images/vision/idias-symposium-flyer.png"
-                    width="800"
-                    height="1132"
-                    alt="Allergy symposium and education materials"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
-                <div class="clinical-pillar__body">
-                  <p>
-                    Evaluation and care for <strong>allergic rhinitis</strong>, <strong>asthma</strong>, <strong>atopic conditions</strong>, and <strong>environmental triggers</strong>—with structured history, testing where appropriate, and clear plans that fit school, work, and home life.
-                  </p>
-                  <p>
-                    We emphasise <strong>avoidance</strong>, <strong>medications used correctly</strong>, and when suitable, pathways for <strong>immunotherapy</strong> and long-term follow-up so symptoms stay controlled—not just on good days.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clinical-pillar">
             <button
               type="button"
-              class="clinical-pillar__tab"
+              class="clinical-tabs__tab"
+              role="tab"
               id="clinical-tab-pulmonology"
-              aria-expanded="false"
+              aria-selected="false"
               aria-controls="clinical-panel-pulmonology"
+              tabindex="-1"
             >
-              <span class="clinical-pillar__label">Pulmonology</span>
-              <span class="clinical-pillar__chev" aria-hidden="true"></span>
+              Pulmonology
             </button>
-            <div
-              class="clinical-pillar__panel"
-              id="clinical-panel-pulmonology"
-              role="region"
-              aria-labelledby="clinical-tab-pulmonology"
-              aria-hidden="true"
-            >
-              <div class="clinical-pillar__inner">
-                <figure class="clinical-pillar__figure">
-                  <img
-                    class="clinical-pillar__img"
-                    src="images/lungs-chairman-vision.png"
-                    width="720"
-                    height="680"
-                    alt="Illustration representing lung and airway care"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
-                <div class="clinical-pillar__body">
-                  <p>
-                    Comprehensive <strong>lung and airway</strong> care—asthma, <strong>COPD</strong>, <strong>ILD</strong>, infections, bronchiectasis, and pleural disease—grounded in examination, lung function testing, and imaging when needed.
-                  </p>
-                  <p>
-                    Screening and treatment plans are built around <strong>how you breathe day to day</strong>, with emphasis on stopping progression, preventing flare-ups, and keeping you active for as long as possible.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="clinical-pillar">
             <button
               type="button"
-              class="clinical-pillar__tab"
+              class="clinical-tabs__tab"
+              role="tab"
               id="clinical-tab-sleep"
-              aria-expanded="false"
+              aria-selected="false"
               aria-controls="clinical-panel-sleep"
+              tabindex="-1"
             >
-              <span class="clinical-pillar__label">Sleep</span>
-              <span class="clinical-pillar__chev" aria-hidden="true"></span>
+              Sleep
             </button>
+          </div>
+
+          <div class="clinical-tabs__panels">
             <div
-              class="clinical-pillar__panel"
-              id="clinical-panel-sleep"
-              role="region"
-              aria-labelledby="clinical-tab-sleep"
-              aria-hidden="true"
+              class="clinical-tabs__panel"
+              id="clinical-panel-allergy"
+              role="tabpanel"
+              aria-labelledby="clinical-tab-allergy"
             >
-              <div class="clinical-pillar__inner">
-                <figure class="clinical-pillar__figure">
-                  <img
-                    class="clinical-pillar__img"
-                    src="images/stock-freedom-nature.jpg"
-                    width="1200"
-                    height="800"
-                    alt="Calm outdoor scene suggesting restorative sleep and open air"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
-                <div class="clinical-pillar__body">
-                  <p>
-                    Assessment of <strong>snoring</strong>, <strong>sleep apnoea</strong>, <strong>insomnia</strong>, and <strong>daytime sleepiness</strong>—including how airway narrowing and allergy load disturb sleep architecture and recovery.
-                  </p>
-                  <p>
-                    Care connects <strong>night-time breathing</strong> with <strong>lung and allergy</strong> treatment so plans address both the airway and habits that support deep, restorative sleep.
-                  </p>
-                </div>
-              </div>
+              <figure class="clinical-tabs__figure">
+                <img
+                  class="clinical-tabs__img"
+                  src="images/vision/idias-symposium-flyer.png"
+                  width="800"
+                  height="1132"
+                  alt="Allergy education and symposium"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <p class="clinical-tabs__blurb">
+                Allergy and asthma care—triggers, testing when needed, and clear plans for day-to-day control.
+              </p>
+            </div>
+            <div
+              class="clinical-tabs__panel"
+              id="clinical-panel-pulmonology"
+              role="tabpanel"
+              aria-labelledby="clinical-tab-pulmonology"
+              hidden
+            >
+              <figure class="clinical-tabs__figure">
+                <img
+                  class="clinical-tabs__img"
+                  src="images/lungs-chairman-vision.png"
+                  width="720"
+                  height="680"
+                  alt="Lung and airway care"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <p class="clinical-tabs__blurb">
+                Lung and airway medicine—spirometry-led assessment and treatment across common and complex chest conditions.
+              </p>
+            </div>
+            <div
+              class="clinical-tabs__panel"
+              id="clinical-panel-sleep"
+              role="tabpanel"
+              aria-labelledby="clinical-tab-sleep"
+              hidden
+            >
+              <figure class="clinical-tabs__figure">
+                <img
+                  class="clinical-tabs__img"
+                  src="images/stock-freedom-nature.jpg"
+                  width="1200"
+                  height="800"
+                  alt="Restful sleep and healthy breathing"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <p class="clinical-tabs__blurb">
+                Sleep-disordered breathing and poor sleep—linked with airway and allergy care where it matters.
+              </p>
             </div>
           </div>
         </div>

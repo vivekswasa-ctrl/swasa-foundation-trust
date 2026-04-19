@@ -726,7 +726,7 @@
       if (
         !t.classList.contains("activity-photo-img") &&
         !t.classList.contains("media-clipping-img") &&
-        !t.classList.contains("clinical-pillar__img")
+        !t.classList.contains("clinical-tabs__img")
       ) {
         return;
       }
@@ -750,9 +750,9 @@
       mediaRoot.addEventListener("click", onGalleryClick);
     }
 
-    var clinicalPillarsGallery = document.querySelector("[data-clinical-pillars]");
-    if (clinicalPillarsGallery) {
-      clinicalPillarsGallery.addEventListener("click", onGalleryClick);
+    var clinicalTabsGallery = document.querySelector("[data-clinical-tabs]");
+    if (clinicalTabsGallery) {
+      clinicalTabsGallery.addEventListener("click", onGalleryClick);
     }
 
     closeBtn.addEventListener("click", closeLightbox);
@@ -769,35 +769,33 @@
 
   initImageLightbox();
 
-  var clinicalPillarsRoot = document.querySelector("[data-clinical-pillars]");
-  if (clinicalPillarsRoot) {
-    var pillarItems = clinicalPillarsRoot.querySelectorAll(".clinical-pillar");
-    clinicalPillarsRoot.addEventListener("click", function (e) {
-      var tab = e.target.closest(".clinical-pillar__tab");
-      if (!tab || !clinicalPillarsRoot.contains(tab)) {
+  var clinicalTabsRoot = document.querySelector("[data-clinical-tabs]");
+  if (clinicalTabsRoot) {
+    var clinicalTabBtns = clinicalTabsRoot.querySelectorAll('[role="tab"]');
+    var clinicalTabPanels = clinicalTabsRoot.querySelectorAll('[role="tabpanel"]');
+    clinicalTabsRoot.addEventListener("click", function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (!tab || !clinicalTabsRoot.contains(tab)) {
         return;
       }
-      var pillar = tab.closest(".clinical-pillar");
-      var panel = pillar ? pillar.querySelector(".clinical-pillar__panel") : null;
-      if (!pillar || !panel) {
+      var panelId = tab.getAttribute("aria-controls");
+      if (!panelId) {
         return;
       }
-      var wasOpen = pillar.classList.contains("is-open");
-      pillarItems.forEach(function (p) {
-        p.classList.remove("is-open");
-        var tBtn = p.querySelector(".clinical-pillar__tab");
-        var pnl = p.querySelector(".clinical-pillar__panel");
-        if (tBtn) {
-          tBtn.setAttribute("aria-expanded", "false");
-        }
-        if (pnl) {
-          pnl.setAttribute("aria-hidden", "true");
-        }
+      clinicalTabBtns.forEach(function (t) {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+        t.tabIndex = -1;
       });
-      if (!wasOpen) {
-        pillar.classList.add("is-open");
-        tab.setAttribute("aria-expanded", "true");
-        panel.setAttribute("aria-hidden", "false");
+      clinicalTabPanels.forEach(function (p) {
+        p.setAttribute("hidden", "");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      tab.tabIndex = 0;
+      var panel = document.getElementById(panelId);
+      if (panel) {
+        panel.removeAttribute("hidden");
       }
     });
   }
