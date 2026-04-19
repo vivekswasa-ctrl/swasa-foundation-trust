@@ -2583,7 +2583,8 @@ html.js .reveal-section.is-visible .pillar:nth-child(4) {
 /* SWASA IDIAS column — below nation banner, heading types in letter by letter */
 .vision-idias-column {
   margin: 2.5rem auto 0;
-  max-width: min(28rem, 100%);
+  max-width: min(52rem, 100%);
+  width: 100%;
   padding: 0 0.35rem;
 }
 
@@ -2612,11 +2613,16 @@ html.js .reveal-section.is-visible .pillar:nth-child(4) {
 
 .vision-idias-stack {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: clamp(0.45rem, 2.5vw, 1rem);
+  width: 100%;
 }
 
 .vision-idias-figure {
+  flex: 1 1 0;
+  min-width: 0;
   margin: 0;
   border-radius: 12px;
   overflow: hidden;
