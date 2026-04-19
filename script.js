@@ -723,7 +723,11 @@
       if (t.tagName !== "IMG") {
         return;
       }
-      if (!t.classList.contains("activity-photo-img") && !t.classList.contains("media-clipping-img")) {
+      if (
+        !t.classList.contains("activity-photo-img") &&
+        !t.classList.contains("media-clipping-img") &&
+        !t.classList.contains("clinical-tabs__img")
+      ) {
         return;
       }
       var src = t.getAttribute("src") || t.src || "";
@@ -746,6 +750,11 @@
       mediaRoot.addEventListener("click", onGalleryClick);
     }
 
+    var clinicalTabsGallery = document.querySelector("[data-clinical-tabs]");
+    if (clinicalTabsGallery) {
+      clinicalTabsGallery.addEventListener("click", onGalleryClick);
+    }
+
     closeBtn.addEventListener("click", closeLightbox);
     if (backdrop) {
       backdrop.addEventListener("click", closeLightbox);
@@ -759,6 +768,37 @@
   }
 
   initImageLightbox();
+
+  var clinicalTabsRoot = document.querySelector("[data-clinical-tabs]");
+  if (clinicalTabsRoot) {
+    var clinicalTabBtns = clinicalTabsRoot.querySelectorAll('[role="tab"]');
+    var clinicalTabPanels = clinicalTabsRoot.querySelectorAll('[role="tabpanel"]');
+    clinicalTabsRoot.addEventListener("click", function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (!tab || !clinicalTabsRoot.contains(tab)) {
+        return;
+      }
+      var panelId = tab.getAttribute("aria-controls");
+      if (!panelId) {
+        return;
+      }
+      clinicalTabBtns.forEach(function (t) {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+        t.tabIndex = -1;
+      });
+      clinicalTabPanels.forEach(function (p) {
+        p.setAttribute("hidden", "");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      tab.tabIndex = 0;
+      var panel = document.getElementById(panelId);
+      if (panel) {
+        panel.removeAttribute("hidden");
+      }
+    });
+  }
 
   var siteHeader = document.getElementById("site-header");
   function updateHeaderScroll() {
