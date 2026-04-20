@@ -1053,7 +1053,13 @@ body.register-open {
   padding-bottom: 0.25rem;
   grid-row: 4;
   align-self: end;
-  transform: translateY(2cm);
+  transform: none;
+}
+
+@media (min-width: 960px) {
+  .hero-carousel-body {
+    transform: translateY(2cm);
+  }
 }
 
 .hero-carousel-text {
@@ -3237,12 +3243,28 @@ body.image-lightbox-open {
   }
 
   .hero-carousel-viewport {
-    min-height: 26rem;
+    min-height: 24rem;
   }
 
   .hero-carousel-slide {
-    min-height: 26rem;
-    padding: 1.05rem 8% 1.25rem;
+    min-height: 24rem;
+    padding: 0.85rem 7% 1rem;
+    grid-template-rows: 1.25fr auto 2.25fr auto 0.85fr;
+  }
+
+  .hero-carousel-body {
+    max-width: 100%;
+    padding-bottom: 0.35rem;
+  }
+
+  .hero-carousel-text {
+    font-size: 0.94rem;
+    line-height: 1.45;
+  }
+
+  .hero-carousel-quote {
+    font-size: clamp(1.12rem, 4.2vw, 1.42rem);
+    line-height: 1.28;
   }
 
   .hero-actions {
