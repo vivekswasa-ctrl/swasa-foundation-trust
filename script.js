@@ -226,10 +226,10 @@
           syncDots();
           var idx = currentIndex();
           if (isMainCarousel) {
-            if (idx === 4 && prevSettledIdx !== 4) {
+            if (idx === 5 && prevSettledIdx !== 5) {
               freedomAnimRun();
             }
-            if (idx === 5 && prevSettledIdx !== 5) {
+            if (idx === 0 && prevSettledIdx !== 0) {
               nationAnimRun();
             }
           }
@@ -326,7 +326,15 @@
 
     syncDots();
     startAutoAdvance();
-    prevSettledIdx = currentIndex();
+    var landingIdx = currentIndex();
+    if (isMainCarousel) {
+      if (landingIdx === 0) {
+        nationAnimRun();
+      } else if (landingIdx === 5) {
+        freedomAnimRun();
+      }
+    }
+    prevSettledIdx = landingIdx;
   }
 
   document.querySelectorAll("[data-carousel]").forEach(function (root) {
