@@ -1185,46 +1185,6 @@ body.register-open {
   }
 }
 
-/* Book launch flyer below message carousel (same top spacing as prior flagship block) */
-.hero-book-launch {
-  margin-top: 3cm;
-  width: 100%;
-  max-width: 100%;
-}
-
-.hero-book-launch__heading {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
-  font-weight: 700;
-  text-align: center;
-  color: var(--color-blue-deep);
-  margin: 0 0 1rem;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-.hero-book-launch__figure {
-  margin: 0;
-  padding: 0.75rem;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  background: linear-gradient(180deg, rgba(238, 245, 251, 0.55) 0%, rgba(255, 255, 255, 0.42) 100%);
-  border-radius: 14px;
-  border: 1px solid rgba(74, 124, 194, 0.12);
-  box-shadow: 0 12px 36px rgba(45, 72, 118, 0.1);
-}
-
-.hero-book-launch__img {
-  display: block;
-  width: auto;
-  height: auto;
-  /* Intrinsic invite is 683px wide; show at 75% (25% smaller) */
-  max-width: min(calc(683px * 0.75), 100%);
-  border-radius: 10px;
-  box-shadow: 0 6px 22px rgba(45, 72, 118, 0.14);
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
