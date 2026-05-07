@@ -13,6 +13,7 @@
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Swasa Foundation Trust, Hyderabad — lung, sleep & nature health since 2008. Founding trustees, CSR, awareness & screening. Freedom to breathe. Save Nature For Future." />
   <meta name="theme-color" content="#325586" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#243a52" media="(prefers-color-scheme: dark)" />
@@ -113,19 +114,19 @@
       <form class="register-form" id="register-form" aria-describedby="register-hint">
         <div class="register-form__field">
           <label for="reg-name">Contact person</label>
-          <input type="text" id="reg-name" name="name" required placeholder="Full name" />
+          <input type="text" id="reg-name" name="name" required maxlength="120" autocomplete="name" placeholder="Full name" />
         </div>
         <div class="register-form__field">
           <label for="reg-phone">Phone number</label>
-          <input type="tel" id="reg-phone" name="phone" required placeholder="+91 98765 43210" />
+          <input type="tel" id="reg-phone" name="phone" required maxlength="32" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" />
         </div>
         <div class="register-form__field">
           <label for="reg-organization">Foundation / company name:</label>
-          <input type="text" id="reg-organization" name="organization" required placeholder="Registered name of foundation or company" />
+          <input type="text" id="reg-organization" name="organization" required maxlength="200" autocomplete="organization" placeholder="Registered name of foundation or company" />
         </div>
         <div class="register-form__field">
           <label for="reg-city">City</label>
-          <input type="text" id="reg-city" name="city" required placeholder="City you are based in" />
+          <input type="text" id="reg-city" name="city" required maxlength="80" autocomplete="address-level2" placeholder="City you are based in" />
         </div>
         <button type="submit" class="register-form__submit">Send enquiry via WhatsApp</button>
       </form>
