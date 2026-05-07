@@ -1170,6 +1170,99 @@ body.register-open {
   outline-offset: 2px;
 }
 
+/* World Asthma Day 2026 — second hero strip (photos + one-line captions) */
+
+.wad-2026-shell {
+  margin-top: 0.15rem;
+}
+
+.wad-2026-intro {
+  padding: 0.85rem 1rem 0.35rem;
+  text-align: center;
+}
+
+.wad-2026-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.8vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #f3fbff;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 2px 16px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.wad-2026-meta {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 2vw, 0.92rem);
+  line-height: 1.45;
+  color: rgba(243, 251, 255, 0.82);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.wad-2026-carousel {
+  margin-top: 0.15rem;
+}
+
+.wad-photo-viewport {
+  min-height: 31rem;
+}
+
+.wad-photo-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  padding: 0.35rem 9% 0.85rem;
+  min-height: 31rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.wad-photo-slide__fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 0.55rem;
+}
+
+.wad-strip-img {
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 11rem;
+  max-height: min(22rem, 52vh);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  cursor: zoom-in;
+}
+
+.wad-photo-caption {
+  margin: 0;
+  padding: 0 0.15rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 2.1vw, 0.92rem);
+  line-height: 1.35;
+  font-weight: 500;
+  color: rgba(243, 251, 255, 0.94);
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (min-width: 960px) {
   .hero-aside {
     position: sticky;
@@ -3225,6 +3318,24 @@ body.image-lightbox-open {
   .hero-carousel-quote {
     font-size: clamp(1.12rem, 4.2vw, 1.42rem);
     line-height: 1.28;
+  }
+
+  .wad-photo-viewport {
+    min-height: 24rem;
+  }
+
+  .wad-photo-slide {
+    min-height: 24rem;
+    padding: 0.25rem 7% 0.65rem;
+  }
+
+  .wad-strip-img {
+    min-height: 9.5rem;
+    max-height: min(17rem, 46vh);
+  }
+
+  .wad-photo-caption {
+    font-size: 0.78rem;
   }
 
   .hero-actions {
