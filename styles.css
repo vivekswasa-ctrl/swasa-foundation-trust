@@ -1421,7 +1421,7 @@ body.register-open {
   outline-offset: 2px;
 }
 
-/* World Asthma Day 2026 — full-bleed photo strip (no hero shell background) */
+/* World Asthma Day 2026 — photo strip aligned to hero message carousel width */
 
 .hero-carousel-shell.wad-2026-shell {
   margin-top: 0.35rem;
@@ -1430,10 +1430,10 @@ body.register-open {
   box-shadow: none;
   border-radius: 0;
   overflow: visible;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .hero-carousel-shell.wad-2026-shell::before {
@@ -1470,8 +1470,10 @@ body.register-open {
 }
 
 .wad-2026-shell .wad-2026-carousel.hero-carousel {
-  max-width: none;
   width: 100%;
+  max-width: min(100%, 46rem);
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 clamp(0.65rem, 2.5vw, 1.75rem) 0.85rem;
   box-sizing: border-box;
 }
@@ -3653,10 +3655,10 @@ body.image-lightbox-open {
   }
 
   .hero-carousel-shell.wad-2026-shell {
-    max-width: none;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .hero-carousel-dot {
