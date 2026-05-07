@@ -1477,7 +1477,7 @@ body.register-open {
 }
 
 .wad-photo-viewport {
-  min-height: min(54vh, 31.5rem);
+  min-height: min(40.5vh, 23.625rem);
   border-radius: clamp(14px, 2.2vw, 22px);
   scroll-padding-inline: 0;
   overflow-x: auto;
@@ -1501,7 +1501,7 @@ body.register-open {
   scroll-snap-stop: always;
   box-sizing: border-box;
   padding: 0.55rem max(0.45rem, env(safe-area-inset-left, 0px)) 0.65rem max(0.45rem, env(safe-area-inset-right, 0px));
-  min-height: min(54vh, 31.5rem);
+  min-height: min(40.5vh, 23.625rem);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -1521,8 +1521,8 @@ body.register-open {
   display: block;
   width: 100%;
   flex: 1 1 auto;
-  min-height: min(43.5vh, 21rem);
-  max-height: min(61.5vh, 42rem);
+  min-height: min(32.625vh, 15.75rem);
+  max-height: min(46.125vh, 31.5rem);
   object-fit: contain;
   object-position: center;
   border-radius: clamp(10px, 1.5vw, 16px);
@@ -1537,7 +1537,7 @@ body.register-open {
 .wad-photo-caption {
   margin: 0 auto;
   margin-top: 0.15rem;
-  max-width: 42rem;
+  max-width: 31.5rem;
   padding: 0.45rem 0.85rem 0.15rem;
   font-family: var(--font-body);
   font-size: clamp(0.76rem, 1.85vw, 0.88rem);
@@ -3757,17 +3757,17 @@ body.image-lightbox-open {
   }
 
   .wad-photo-viewport {
-    min-height: min(52.5vh, 28.5rem);
+    min-height: min(39.375vh, 21.375rem);
   }
 
   .wad-photo-slide {
-    min-height: min(52.5vh, 28.5rem);
+    min-height: min(39.375vh, 21.375rem);
     padding: 0.45rem 0 0.5rem;
   }
 
   .wad-strip-img {
-    min-height: min(40.5vh, 16.5rem);
-    max-height: min(61.5vh, 36rem);
+    min-height: min(30.375vh, 12.375rem);
+    max-height: min(46.125vh, 27rem);
   }
 
   .wad-photo-caption {
