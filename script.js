@@ -204,7 +204,11 @@
 
     function startAutoAdvance() {
       pauseAutoAdvance();
-      if (reducedMotionCarousel || total <= 1) {
+      if (
+        reducedMotionCarousel ||
+        total <= 1 ||
+        carouselRoot.hasAttribute("data-carousel-no-auto")
+      ) {
         return;
       }
       autoIntervalId = window.setInterval(function () {
@@ -731,7 +735,11 @@
       if (t.tagName !== "IMG") {
         return;
       }
-      if (!t.classList.contains("activity-photo-img") && !t.classList.contains("media-clipping-img")) {
+      if (
+        !t.classList.contains("activity-photo-img") &&
+        !t.classList.contains("media-clipping-img") &&
+        !t.classList.contains("wad-strip-img")
+      ) {
         return;
       }
       var src = t.getAttribute("src") || t.src || "";
@@ -752,6 +760,10 @@
     }
     if (mediaRoot) {
       mediaRoot.addEventListener("click", onGalleryClick);
+    }
+    var wadCarousel = document.getElementById("wad-2026-carousel");
+    if (wadCarousel) {
+      wadCarousel.addEventListener("click", onGalleryClick);
     }
 
     closeBtn.addEventListener("click", closeLightbox);
