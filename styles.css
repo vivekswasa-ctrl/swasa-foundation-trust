@@ -3241,12 +3241,129 @@ body.image-lightbox-open {
 /* ---------- Phones & small tablets — fast load, comfortable tap targets ---------- */
 
 @media (max-width: 767px) {
+  :root {
+    --header-h: 92px;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   body {
     overflow-x: clip;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  main#main {
+    max-width: 100%;
+    overflow-x: clip;
+    padding-bottom: max(5.5rem, calc(env(safe-area-inset-bottom, 0px) + 4.25rem));
+  }
+
+  .logo-img {
+    max-height: 88px;
+    max-width: min(260px, 72vw);
+  }
+
+  .section-title {
+    font-size: clamp(1.45rem, 5.2vw, 2.05rem);
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  .section-intro {
+    margin-bottom: 1.35rem;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+  }
+
+  .about-slogan {
+    font-size: 1rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .contact-address {
+    padding: 1rem 1.1rem;
+  }
+
+  .contact-label {
+    min-width: 0;
+    flex: 0 0 100%;
+  }
+
+  .contact-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .image-lightbox__figure {
+    max-width: 100%;
+    max-height: min(90vh, 900px);
+  }
+
+  .image-lightbox__img {
+    max-width: 100%;
+    max-height: min(calc(88vh - 4.5rem), 900px);
+  }
+
+  .image-lightbox__caption {
+    font-size: 0.86rem;
+    max-width: 100%;
+    padding: 0 0.35rem;
+  }
+
+  .image-lightbox__close {
+    top: max(0.25rem, env(safe-area-inset-top, 0px));
+    right: max(0.25rem, env(safe-area-inset-right, 0px));
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .register-modal {
+    padding: 1.35rem 1.1rem 1.25rem;
+    width: min(440px, calc(100vw - 1.25rem));
+  }
+
+  .hero-aside {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero-carousel-shell,
+  .wad-2026-shell {
+    max-width: 100%;
+  }
+
+  .hero-carousel-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0.55rem;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    background-clip: content-box;
+  }
+
+  .hero-carousel-dot:not([aria-selected="true"]) {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .hero-carousel-dot[aria-selected="true"] {
+    background-image: linear-gradient(135deg, var(--color-blue) 0%, var(--color-accent) 100%);
+    background-color: transparent;
+  }
+
+  .pollution-layout {
+    min-width: 0;
+  }
+
+  .pollution-text-column {
+    padding: clamp(0.85rem, 3vw, 1.25rem) clamp(0.85rem, 3vw, 1.35rem);
   }
 
   .header-inner {
@@ -3406,6 +3523,16 @@ body.image-lightbox-open {
     min-height: 2.75rem;
     touch-action: manipulation;
   }
+
+  .whatsapp-fab {
+    bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+    right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+
+  .register-camps-fab {
+    bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+    left: max(1.25rem, env(safe-area-inset-left, 0px));
+  }
 }
 
 /* ── Collaborate for an event (left FAB; opens enquiry modal) ── */
@@ -3465,7 +3592,7 @@ body.image-lightbox-open {
   .register-camps-fab {
     padding: 0.75rem;
     border-radius: 50%;
-    bottom: 5.5rem;
+    bottom: max(5.5rem, calc(env(safe-area-inset-bottom, 0px) + 4.5rem));
     left: max(1.25rem, env(safe-area-inset-left, 0px));
   }
 
@@ -3526,7 +3653,8 @@ body.image-lightbox-open {
   .whatsapp-fab {
     padding: 0.75rem;
     border-radius: 50%;
-    bottom: 5.5rem;
+    bottom: max(5.5rem, calc(env(safe-area-inset-bottom, 0px) + 4.5rem));
+    right: max(1.1rem, env(safe-area-inset-right, 0px));
   }
 
   .whatsapp-fab__label {
