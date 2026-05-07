@@ -29,7 +29,7 @@
     });
   }
 
-  /* Hero carousels: auto-advance, eased scroll; pauses on hover / focus / touch. Main carousel only: freedom/nation tagline replay. */
+  /* Hero carousels: auto-advance, eased scroll; pauses on hover / focus / touch. Optional data-carousel-interval (ms). data-carousel-no-auto disables advance. Main carousel only: freedom/nation tagline replay. */
   var freedomAnimRun = function () {};
   var nationAnimRun = function () {};
   var reducedMotionCarousel =
@@ -113,8 +113,13 @@
     var btnPrev = carouselRoot.querySelector("[data-carousel-prev]");
     var btnNext = carouselRoot.querySelector("[data-carousel-next]");
     var total = dots.length;
-    var AUTO_MS = 5000;
-    var SCROLL_MS = 1100;
+    var intervalAttr = carouselRoot.getAttribute("data-carousel-interval");
+    var parsedInterval = intervalAttr ? parseInt(intervalAttr, 10) : NaN;
+    var AUTO_MS =
+      !isNaN(parsedInterval) && parsedInterval >= 1500 && parsedInterval <= 60000
+        ? parsedInterval
+        : 5000;
+    var SCROLL_MS = AUTO_MS <= 3500 ? 750 : 1100;
     var autoIntervalId = null;
     var scrollAnimToken = 0;
     var isMainCarousel = carouselRoot.hasAttribute("data-carousel-main");
