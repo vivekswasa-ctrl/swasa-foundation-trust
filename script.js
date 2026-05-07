@@ -1,3 +1,4 @@
+document.documentElement.classList.add("js");
 (function () {
   var yearEl = document.getElementById("year");
   if (yearEl) {
