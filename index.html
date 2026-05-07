@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
 
-  <!-- Google Analytics — replace G-XXXXXXXXXX with your Measurement ID -->
+  <!-- Google Analytics: replace G-XXXXXXXXXX in both URLs and in js/ga-init.js. After changing ga-init.js, refresh its integrity hash. -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <script
+    defer
+    src="js/ga-init.js"
+    integrity="sha384-oojgxCm+38cyAbPWApaV+bgpw69s+AB+wGFFlTBJEAJQbqWwntH+/FC45/XfvOUW"
+    crossorigin="anonymous"
+  ></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -50,9 +50,6 @@
   <link rel="preload" href="images/logo-swasa-foundation-trust.png" as="image" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <script>
-    document.documentElement.classList.add("js");
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -967,6 +964,11 @@
     </svg>
   </button>
 
-  <script src="script.js"></script>
+  <!-- Integrity: openssl dgst -sha384 -binary script.js | openssl base64 -A -->
+  <script
+    src="script.js"
+    integrity="sha384-5oHE+bWiMDictGoGeaGf/KYCkDf+becZigcDt623SaBIXVFSvgzcsRGKTBj0orGg"
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>
