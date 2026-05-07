@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
 
-  <!-- Google Analytics: replace G-XXXXXXXXXX in both URLs and in js/ga-init.js. After changing ga-init.js, refresh its integrity hash. -->
+  <!-- Google Analytics — replace G-XXXXXXXXXX with your Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script
-    defer
-    src="js/ga-init.js"
-    integrity="sha384-oojgxCm+38cyAbPWApaV+bgpw69s+AB+wGFFlTBJEAJQbqWwntH+/FC45/XfvOUW"
-    crossorigin="anonymous"
-  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="Swasa Foundation Trust, Hyderabad — lung, sleep & nature health since 2008. Founding trustees, CSR, awareness & screening. Freedom to breathe. Save Nature For Future." />
   <meta name="theme-color" content="#325586" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#243a52" media="(prefers-color-scheme: dark)" />
@@ -50,6 +49,9 @@
   <link rel="preload" href="images/logo-swasa-foundation-trust.png" as="image" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -78,7 +80,7 @@
           href="https://wa.me/919676764968?text=Hello%20SWASA%20Foundation%20Trust%2C%20I%20would%20like%20to%20book%20a%20free%20Breathe%20Camp%20at%20my%20office%2Fcommunity%20or%20area."
           target="_blank"
           rel="noopener noreferrer"
-        ><span class="nav-book-camp__label">Book a camp</span></a>
+        >Book a camp</a>
       </nav>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -96,7 +98,7 @@
         href="https://wa.me/919676764968?text=Hello%20SWASA%20Foundation%20Trust%2C%20I%20would%20like%20to%20book%20a%20free%20Breathe%20Camp%20at%20my%20office%2Fcommunity%20or%20area."
         target="_blank"
         rel="noopener noreferrer"
-      ><span class="nav-book-camp__label">Book a camp</span></a>
+      >Book a camp</a>
     </div>
   </header>
 
@@ -111,19 +113,19 @@
       <form class="register-form" id="register-form" aria-describedby="register-hint">
         <div class="register-form__field">
           <label for="reg-name">Contact person</label>
-          <input type="text" id="reg-name" name="name" required maxlength="120" autocomplete="name" placeholder="Full name" />
+          <input type="text" id="reg-name" name="name" required placeholder="Full name" />
         </div>
         <div class="register-form__field">
           <label for="reg-phone">Phone number</label>
-          <input type="tel" id="reg-phone" name="phone" required maxlength="32" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" />
+          <input type="tel" id="reg-phone" name="phone" required placeholder="+91 98765 43210" />
         </div>
         <div class="register-form__field">
           <label for="reg-organization">Foundation / company name:</label>
-          <input type="text" id="reg-organization" name="organization" required maxlength="200" autocomplete="organization" placeholder="Registered name of foundation or company" />
+          <input type="text" id="reg-organization" name="organization" required placeholder="Registered name of foundation or company" />
         </div>
         <div class="register-form__field">
           <label for="reg-city">City</label>
-          <input type="text" id="reg-city" name="city" required maxlength="80" autocomplete="address-level2" placeholder="City you are based in" />
+          <input type="text" id="reg-city" name="city" required placeholder="City you are based in" />
         </div>
         <button type="submit" class="register-form__submit">Send enquiry via WhatsApp</button>
       </form>
@@ -300,9 +302,7 @@
               aria-roledescription="carousel"
               aria-labelledby="wad-2026-heading"
               data-carousel
-              data-carousel-auto-ms="3000"
-              data-carousel-scroll-ms="900"
-              data-carousel-dwell="true"
+              data-carousel-no-auto
               data-slide-index="0"
             >
               <div
@@ -966,11 +966,6 @@
     </svg>
   </button>
 
-  <!-- Integrity: openssl dgst -sha384 -binary script.js | openssl base64 -A -->
-  <script
-    src="script.js"
-    integrity="sha384-5oHE+bWiMDictGoGeaGf/KYCkDf+becZigcDt623SaBIXVFSvgzcsRGKTBj0orGg"
-    crossorigin="anonymous"
-  ></script>
+  <script src="script.js"></script>
 </body>
 </html>
