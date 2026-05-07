@@ -118,7 +118,9 @@ document.documentElement.classList.add("js");
     var AUTO_MS = !isNaN(autoParsed) && autoParsed >= 800 ? autoParsed : 5000;
     var scrollParsed = parseInt(carouselRoot.getAttribute("data-carousel-scroll-ms") || "", 10);
     var SCROLL_MS = !isNaN(scrollParsed) && scrollParsed >= 200 ? scrollParsed : 1100;
+    var useDwell = carouselRoot.getAttribute("data-carousel-dwell") === "true";
     var autoIntervalId = null;
+    var autoTimeoutId = null;
     var scrollAnimToken = 0;
     var isMainCarousel = carouselRoot.hasAttribute("data-carousel-main");
     var prevSettledIdx = -1;
@@ -176,7 +178,7 @@ document.documentElement.classList.add("js");
       window.requestAnimationFrame(step);
     }
 
-    function goToSlide(index) {
+    function goToSlide(index, afterScroll) {
       if (total <= 0) {
         return;
       }
@@ -185,6 +187,9 @@ document.documentElement.classList.add("js");
       carouselRoot.setAttribute("data-slide-index", String(i));
       scrollViewportToX(i * w, SCROLL_MS, function () {
         syncDots();
+        if (typeof afterScroll === "function") {
+          afterScroll();
+        }
       });
     }
 
@@ -203,6 +208,17 @@ document.documentElement.classList.add("js");
         clearInterval(autoIntervalId);
         autoIntervalId = null;
       }
+      if (autoTimeoutId !== null) {
+        clearTimeout(autoTimeoutId);
+        autoTimeoutId = null;
+      }
+    }
+
+    function scheduleNextDwell() {
+      autoTimeoutId = window.setTimeout(function () {
+        autoTimeoutId = null;
+        goToSlide(currentIndex() + 1, scheduleNextDwell);
+      }, AUTO_MS);
     }
 
     function startAutoAdvance() {
@@ -214,9 +230,13 @@ document.documentElement.classList.add("js");
       ) {
         return;
       }
-      autoIntervalId = window.setInterval(function () {
-        goToSlide(currentIndex() + 1);
-      }, AUTO_MS);
+      if (useDwell) {
+        scheduleNextDwell();
+      } else {
+        autoIntervalId = window.setInterval(function () {
+          goToSlide(currentIndex() + 1);
+        }, AUTO_MS);
+      }
     }
 
     function restartAutoAdvance() {
