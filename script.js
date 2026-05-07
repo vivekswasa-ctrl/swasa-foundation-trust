@@ -963,7 +963,15 @@
         + "Foundation/Company: " + encodeURIComponent(organization) + "%0A"
         + "City: " + encodeURIComponent(city);
 
-      window.open("https://wa.me/919676764968?text=" + msg, "_blank");
+      var waUrl = "https://wa.me/919676764968?text=" + msg;
+      var popup = window.open(waUrl, "_blank", "noopener,noreferrer");
+      if (popup) {
+        try {
+          popup.opener = null;
+        } catch (err) {
+          /* ignore */
+        }
+      }
       closeRegister();
       regForm.reset();
     });
