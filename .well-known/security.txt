@@ -1,3 +1,0 @@
-Contact: mailto:swasafoundationtrust@gmail.com
-Preferred-Languages: en
-Canonical: https://www.swasafoundationtrust.com/.well-known/security.txt
