@@ -3570,6 +3570,15 @@ body.image-lightbox-open {
   opacity: 0.75;
 }
 
+.footer-credit {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  opacity: 0.62;
+  letter-spacing: 0.02em;
+  color: #c5d8e8;
+}
+
 /* ---------- Phones & small tablets — fast load, comfortable tap targets ---------- */
 
 @media (max-width: 767px) {
